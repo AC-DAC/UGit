@@ -118,3 +118,83 @@ h1 {
         text-shadow: 0 0 20px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.4);
     }
 }
+
+.shooting-star {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.8);
+    animation: shooting-star 30s linear infinite;
+    z-index: 1;
+}
+
+.dust-trail {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    animation: dust-trail 30s linear infinite;
+}
+
+.dust-trail::before,
+.dust-trail::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    animation: dust-particle 2s infinite ease-in-out;
+}
+
+.dust-trail::before {
+    top: -10px;
+    left: -10px;
+    animation-delay: 0.2s;
+}
+
+.dust-trail::after {
+    top: -15px;
+    left: -5px;
+    animation-delay: 0.4s;
+}
+
+@keyframes dust-particle {
+    0%, 100% {
+        transform: scale(0.5);
+        opacity: 0.2;
+    }
+    50% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+}
+
+@keyframes dust-trail {
+    0% {
+        transform: translate(-100%, -100%);
+    }
+    100% {
+        transform: translate(100vw, 100vh);
+    }
+}
+
+@keyframes shooting-star {
+    0% {
+        transform: translate(-100%, -100%) scale(1);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translate(100vw, 100vh) scale(0.5);
+        opacity: 0;
+    }
+}
